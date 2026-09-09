@@ -1,0 +1,22 @@
+{
+"United States": {
+"2024": {
+"Burglary": {
+"offenses": 779542,
+"rate": 229.2
+},
+"Robbery": {
+"offenses": 205952,
+"rate": 60.6
+},
+"Larceny": {
+"offenses": 4326531,
+"rate": 1272.1
+},
+"Motor Vehicle Theft": {
+"offenses": 880327,
+"rate": 258.8
+}
+}
+}
+}
