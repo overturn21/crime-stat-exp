@@ -3,20 +3,134 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Crime Stat Explorer</title>
+
+<style>
+* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+
+body {
+font-family: Arial, sans-serif;
+background: #f4f6f8;
+color: #1f2933;
+}
+
+header {
+background: #17202a;
+color: white;
+padding: 25px 40px;
+}
+
+header h1 {
+font-size: 30px;
+}
+
+header p {
+margin-top: 8px;
+color: #cbd5e1;
+}
+
+.container {
+max-width: 1100px;
+margin: 40px auto;
+padding: 0 20px;
+}
+
+.search-box {
+background: white;
+padding: 25px;
+border-radius: 12px;
+box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
+
+.search-box h2 {
+margin-bottom: 20px;
+}
+
+.controls {
+display: flex;
+gap: 15px;
+flex-wrap: wrap;
+}
+
+select, button {
+padding: 12px 15px;
+border-radius: 8px;
+border: 1px solid #cbd5e1;
+font-size: 15px;
+}
+
+button {
+background: #17202a;
+color: white;
+cursor: pointer;
+border: none;
+}
+
+button:hover {
+background: #2c3e50;
+}
+
+.stats {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+gap: 20px;
+margin-top: 30px;
+}
+
+.card {
+background: white;
+padding: 25px;
+border-radius: 12px;
+box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
+
+.card h3 {
+color: #64748b;
+font-size: 14px;
+margin-bottom: 10px;
+}
+
+.number {
+font-size: 32px;
+font-weight: bold;
+}
+
+.dashboard {
+margin-top: 30px;
+background: white;
+padding: 30px;
+border-radius: 12px;
+box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
+
+footer {
+text-align: center;
+padding: 40px;
+color: #64748b;
+}
+</style>
 </head>
 
 <body>
 
+<header>
 <h1>🔎 Crime Stat Explorer</h1>
-
 <p>Explore crime statistics and criminal justice data.</p>
+</header>
 
-<hr>
+<div class="container">
 
-<h2>Crime Search</h2>
+<div class="search-box">
 
-<label for="state">State:</label>
+<h2>Search Crime Data</h2>
+
+<div class="controls">
+
 <select id="state">
 <option>New York</option>
 <option>New Jersey</option>
@@ -26,9 +140,6 @@
 <option>Florida</option>
 </select>
 
-<br><br>
-
-<label for="crime">Crime:</label>
 <select id="crime">
 <option>Violent Crime</option>
 <option>Property Crime</option>
@@ -38,9 +149,81 @@
 <option>Larceny</option>
 </select>
 
-<br><br>
+<select id="year">
+<option>2024</option>
+<option>2023</option>
+<option>2022</option>
+<option>2021</option>
+<option>2020</option>
+</select>
 
-<button>Explore Statistics</button>
+<button onclick="exploreData()">Explore Statistics</button>
+
+</div>
+
+</div>
+
+<div class="stats">
+
+<div class="card">
+<h3>Reported Offenses</h3>
+<div class="number" id="offenses">—</div>
+</div>
+
+<div class="card">
+<h3>Crime Rate</h3>
+<div class="number" id="rate">—</div>
+</div>
+
+<div class="card">
+<h3>Year</h3>
+<div class="number" id="selectedYear">—</div>
+</div>
+
+<div class="card">
+<h3>Location</h3>
+<div class="number" id="selectedState">—</div>
+</div>
+
+</div>
+
+<div class="dashboard">
+
+<h2>📊 Crime Overview</h2>
+
+<br>
+
+<p id="message">
+Select a state, crime, and year above to explore the data.
+</p>
+
+</div>
+
+</div>
+
+<footer>
+Crime Stat Explorer • Criminal Justice Data Project
+</footer>
+
+<script>
+
+function exploreData() {
+
+const state = document.getElementById("state").value;
+const crime = document.getElementById("crime").value;
+const year = document.getElementById("year").value;
+
+document.getElementById("selectedState").textContent = state;
+document.getElementById("selectedYear").textContent = year;
+
+document.getElementById("offenses").textContent = "Coming soon";
+document.getElementById("rate").textContent = "Coming soon";
+
+document.getElementById("message").textContent =
+`You selected ${crime} in ${state} for ${year}. Real crime statistics will be added next!`;
+}
+
+</script>
 
 </body>
 </html>
